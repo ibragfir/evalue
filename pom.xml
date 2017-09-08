@@ -38,7 +38,7 @@
                             <archive>
                                 <manifest>
                                     <mainClass>
-                                        com.example.evalue.tracker.PaymentTracker
+                                        com.example.tracker.PaymentTracker
                                     </mainClass>
                                 </manifest>
                             </archive>

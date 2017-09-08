@@ -1,6 +1,6 @@
-package com.example.evalue.tracker.domain;
+package com.example.tracker.domain;
 
-import com.example.evalue.tracker.util.CurrencyValidator;
+import com.example.tracker.util.CurrencyValidator;
 
 public class BalanceHolder {
     private String currency;

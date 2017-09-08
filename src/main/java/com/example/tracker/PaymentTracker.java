@@ -1,8 +1,8 @@
-package com.example.evalue.tracker;
+package com.example.tracker;
 
-import com.example.evalue.tracker.concurrent.DaemonThreadFactory;
-import com.example.evalue.tracker.domain.BalanceHolder;
-import com.example.evalue.tracker.domain.Transaction;
+import com.example.tracker.concurrent.DaemonThreadFactory;
+import com.example.tracker.domain.BalanceHolder;
+import com.example.tracker.domain.Transaction;
 
 import java.io.*;
 import java.nio.file.Files;

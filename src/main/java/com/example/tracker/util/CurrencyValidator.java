@@ -1,4 +1,4 @@
-package com.example.evalue.tracker.util;
+package com.example.tracker.util;
 
 import java.util.stream.IntStream;
 
