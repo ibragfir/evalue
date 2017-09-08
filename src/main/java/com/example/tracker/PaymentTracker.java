@@ -16,6 +16,14 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * It is assumed that the input is always correct. Invalid inputs will cause the program to die by throwing an exception.
+ * Invalid (not existing) path to a file will end up as described above.
+ * The path to the file can be either relative or absolute.
+ * The input is expected to be read from standard input, the output of the program is sent to standard output by default.
+ * The report for the first time is executed immediately and then periodically after each minute.
+ *
+ */
 public class PaymentTracker {
     private static final String EXIT_CMD = "quit";
     private static final long REPORT_PERIOD_SEC = 60;
