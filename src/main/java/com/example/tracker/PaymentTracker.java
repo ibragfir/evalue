@@ -1,7 +1,7 @@
 package com.example.tracker;
 
 import com.example.tracker.concurrent.DaemonThreadFactory;
-import com.example.tracker.domain.BalanceHolder;
+import com.example.tracker.domain.Balance;
 import com.example.tracker.domain.Transaction;
 
 import java.io.*;
@@ -20,7 +20,7 @@ public class PaymentTracker {
     private static final String EXIT_CMD = "quit";
     private static final long REPORT_PERIOD_SEC = 60;
 
-    private final Map<String, BalanceHolder> balances = new ConcurrentHashMap<>();
+    private final Map<String, Balance> balances = new ConcurrentHashMap<>();
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor(new DaemonThreadFactory());
 
 
@@ -43,7 +43,7 @@ public class PaymentTracker {
 
     private void processInput(String input) {
         Transaction tran = Transaction.parse(input);
-        balances.compute(tran.currency, (k, v) -> (v == null) ? new BalanceHolder(k, tran.amount) : v.addAmount(tran.amount));
+        balances.compute(tran.currency, (k, v) -> (v == null) ? new Balance(k, tran.amount) : v.addAmount(tran.amount));
     }
 
     private void readFile(Path file) throws IOException {
