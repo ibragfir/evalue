@@ -32,7 +32,7 @@ public class PaymentTracker {
         if (args.length != 0) {
             readFile(Paths.get(args[0]));
         }
-        executor.scheduleAtFixedRate(() -> printAccounts(System.out), 0, REPORT_PERIOD_SEC, TimeUnit.SECONDS);
+        executor.scheduleAtFixedRate(() -> printBalances(System.out), 0, REPORT_PERIOD_SEC, TimeUnit.SECONDS);
 
         Scanner scanner = new Scanner(System.in);
         String input;
@@ -50,7 +50,7 @@ public class PaymentTracker {
         Files.lines(file).forEach(this::processInput);
     }
 
-    private void printAccounts(OutputStream out) {
+    private void printBalances(OutputStream out) {
         PrintWriter writer = new PrintWriter(out);
         writer.println("Net Balances as per " + ZonedDateTime.now() + ":");
         balances.values().stream().filter(holder -> holder.getBalance() != 0)
