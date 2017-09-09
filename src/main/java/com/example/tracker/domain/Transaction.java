@@ -2,7 +2,9 @@ package com.example.tracker.domain;
 
 import com.example.tracker.util.CurrencyValidator;
 
-
+/**
+ * This class is intended to be immutable.
+ */
 public final class Transaction {
     private static final String CCY_AMOUNT_SEPARATOR = " ";
 
