@@ -1,7 +1,7 @@
 package com.example.tracker;
 
 import com.example.tracker.concurrent.DaemonThreadFactory;
-import com.example.tracker.domain.Balance;
+import com.example.tracker.domain.CcyBalance;
 import com.example.tracker.domain.Transaction;
 
 import java.io.*;
@@ -19,16 +19,15 @@ import java.util.concurrent.TimeUnit;
 /**
  * It is assumed that the input is always correct. Invalid inputs will cause the program to die by throwing an exception.
  * Invalid (not existing) path to a file will end up as described above.
- * The path to the file can be either relative or absolute.
- * The input is expected to be read from standard input, the output of the program is sent to standard output by default.
- * The report for the first time is executed immediately and then periodically after each minute.
- *
+ * A path to a file can be either relative or absolute.
+ * An input is expected to be read from standard input, an output of the program is sent to standard output by default.
+ * A report for the first time is executed immediately and then periodically after each minute.
  */
 public class PaymentTracker {
     private static final String EXIT_CMD = "quit";
     private static final long REPORT_PERIOD_SEC = 60;
 
-    private final Map<String, Balance> balances = new ConcurrentHashMap<>();
+    private final Map<String, CcyBalance> balances = new ConcurrentHashMap<>();
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor(new DaemonThreadFactory());
 
 
@@ -51,7 +50,7 @@ public class PaymentTracker {
 
     private void processInput(String input) {
         Transaction tran = Transaction.parse(input);
-        balances.compute(tran.currency, (k, v) -> (v == null) ? new Balance(k, tran.amount) : v.addAmount(tran.amount));
+        balances.compute(tran.currency, (k, v) -> (v == null) ? new CcyBalance(k, tran.amount) : v.addAmount(tran.amount));
     }
 
     private void readFile(Path file) throws IOException {

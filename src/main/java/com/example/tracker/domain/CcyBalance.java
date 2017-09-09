@@ -2,15 +2,15 @@ package com.example.tracker.domain;
 
 import com.example.tracker.util.CurrencyValidator;
 
-public class Balance {
+public class CcyBalance {
     private String currency;
     private long balance;
 
-    public Balance(String currency) {
+    public CcyBalance(String currency) {
         this(currency, 0L);
     }
 
-    public Balance(String currency, long startingBalance) {
+    public CcyBalance(String currency, long startingBalance) {
         this.currency = CurrencyValidator.validate(currency);
         this.balance = startingBalance;
     }
@@ -31,14 +31,14 @@ public class Balance {
         this.balance = balance;
     }
 
-    public Balance addAmount(long amount) {
+    public CcyBalance addAmount(long amount) {
         balance += amount;
         return this;
     }
 
     @Override
     public boolean equals(Object other) {
-        return other instanceof Balance && currency.equals(((Balance) other).currency);
+        return other instanceof CcyBalance && currency.equals(((CcyBalance) other).currency);
     }
 
     @Override
