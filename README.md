@@ -1,7 +1,7 @@
 # Payment Tracker for eValue
 
 ### Prerequisites
-1. JRE 8 and Maven 3.3.9 or later versions required
+1. JDK 8 and Maven 3.3.9 or later versions required
 
 ## Building the application (and running the Unit tests)
 ```maven
